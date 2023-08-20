@@ -25,7 +25,7 @@ typedef struct builtIn
 {
 	char *cmd;
 	()(*func)();
-} built_in;
+} builtin_t;
 
 int main(void);
 
