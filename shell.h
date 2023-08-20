@@ -1,5 +1,5 @@
-#ifndef __SIMPLE_SHELL__
-#define __SIMPLE_SHELL__
+#ifndef _SHELL_H_
+#define _SHELL_H_
 
 #define IN 1
 #define OUT 0
@@ -13,24 +13,20 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+extern char **environ;
 
+/**
+ * struct builtIn - is a structure that contains 2 elements
+ * @cmd: is a pointer to chatracter
+ * @func: is a pointer to function
+ * Description: this structure defines a built-in shell command
+ */
+typedef struct builtIn
+{
+	char *cmd;
+	()(*func)();
+} built_in;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+int main(void);
 
 #endif
