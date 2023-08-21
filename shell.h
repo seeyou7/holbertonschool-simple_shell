@@ -14,6 +14,9 @@
 #include <unistd.h>
 
 extern char **environ;
+int exit_func(void);
+int print_env(void);
+
 
 /**
  * struct builtIn - is a structure that contains 2 elements
