@@ -21,7 +21,7 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			write(STDOUT_FILENO, "new_shell>>", 11)
+			write(STDOUT_FILENO, "new_shell>>", 11);
 		}
 		input_cmd = read_command();
 		arr_cmd = split_input(input_cmd);
@@ -35,14 +35,12 @@ int main(void)
 			}
 			i++;
 		}
-		if (!true_builtin)
+		if (true_builtin != 1)
 		{
 			if (arr_cmd != NULL)
 			{
-				if (input_cmd[0] != '\n' || input_cmd[1] != '\0')
-				{
-					execute_cmd(arr_cmd);
-				}
+				execute_cmd(arr_cmd);
+			}
 				free(input_cmd);
 				free(arr_cmd);
 			}
