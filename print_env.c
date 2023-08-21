@@ -1,8 +1,8 @@
 #include "shell.h"
 /**
- * print_env: is a function that print the variables environment
+ * print_env - is a function that print the variables environment
  *
- * return: 0 (Success)
+ * Return: 0 (Success)
  */
 
 int print_env(void)
