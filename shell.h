@@ -14,9 +14,6 @@
 #include <unistd.h>
 
 extern char **environ;
-int exit_func(void);
-int print_env(void);
-
 
 /**
  * struct builtIn - is a structure that contains 2 elements
@@ -31,5 +28,9 @@ typedef struct builtIn
 } builtin_t;
 
 int main(void);
+int exit_func(void);
+int print_env(void);
+char *read_command(void);
+char **split_cmd(char *input);
 
 #endif
