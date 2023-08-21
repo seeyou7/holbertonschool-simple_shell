@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * main: entry point of the program
+ * main - entry point of the program
  *
  * Return: 0 Success
  */
