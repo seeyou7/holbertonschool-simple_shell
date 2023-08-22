@@ -45,4 +45,3 @@ char **split_env(char *path)
         arr_path[i] = NULL;
         return (arr_path);
 }
-~
