@@ -4,18 +4,15 @@
  *
  * Return: a string wich store the path variable
  */
-char *get_env()
+char *get_env(char *input_cmd)
 {
-	char *path;
-	int i;
+	int i, size;
 
-	for (i = 0; environ[i] != NULL; i++)
+	size = strlen(input_cmd);
+	for (i = 0; environ[i]; i++)
 	{
-		if (strncmp(environ[i], "PATH", 4) == 0)
-		{
-			path = environ[i];
-		}
-		i++;
+		if (strncmp(environ[i], input_cmd, size) == 0)
+			return (environ[i] + size + 1);
 	}
-	return (path);
+	return (NULL);
 }

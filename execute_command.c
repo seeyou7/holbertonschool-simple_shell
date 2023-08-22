@@ -1,4 +1,4 @@
-#include "shall.h"
+#include "shell.h"
 /**
  * execute_cmd - is a function that execute a not builtin command
  * Return: an integer 
@@ -19,11 +19,11 @@ int execute_cmd(char **arr_cmd)
 	{
 		if (arg[0] != '/' && arg[0] != '.')
 		{
-			newcmd = get_path(arr_cmd[0]);
+			newcmd = find_path(arr_cmd[0]);
 		}
 		if (newcmd == NULL)
 		{
-			perror("Error: get_path");
+			perror("Error: find_path");
 			exit(EXIT_FAILURE);
 		}
 		free(arg);
