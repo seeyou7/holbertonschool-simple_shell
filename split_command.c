@@ -31,4 +31,3 @@ char **split_cmd(char *input)
 	tokens[i] = NULL;
 	return (tokens);
 }
-

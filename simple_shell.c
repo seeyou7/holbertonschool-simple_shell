@@ -43,10 +43,6 @@ int main()
 			{
 				true_builtin = 1;
 				builtins[i].func();
-	
-				if (i == 0)
-				{
-				}
 				break;
 			}
 			i++;

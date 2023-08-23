@@ -21,7 +21,7 @@ char *get_env(char *input_cmd)
   * split_env - tokenize the path
   * @path: path to tokenize
   * Return: array of tokens
-  */
+  *
 char **split_env(char *path)
 {
         int size = 1024;
@@ -44,3 +44,4 @@ char **split_env(char *path)
         arr_path[i] = NULL;
         return (arr_path);
 }
+*/

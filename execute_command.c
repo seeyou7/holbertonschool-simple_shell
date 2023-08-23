@@ -35,7 +35,8 @@ int execute_cmd(char **arr_cmd)
 
     if (_pid == 0)
     {
-        execve(full_path, arr_cmd, NULL);
+        execve(full_path, arr_cmd, environ);
+	if (full_path != cmd)
         perror("Error: execve");
         exit(EXIT_FAILURE);
     }
