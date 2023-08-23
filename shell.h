@@ -5,8 +5,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <signal.h>
-#include <signal.h>
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -23,10 +21,10 @@ extern char **environ;
 typedef struct builtIn
 {
 	char *cmd;
-	int(*func)(void);
+	int (*func)(void);
 } builtin_t;
 
-int main();
+int main(void);
 int exit_func(void);
 int print_env(void);
 char *read_command(void);
