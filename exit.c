@@ -8,5 +8,4 @@
 int exit_func(void)
 {
 	exit(0);
-	return (0);
 }
