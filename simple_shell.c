@@ -41,8 +41,12 @@ int main()
 		{
 			if (strcmp(builtins[i].cmd, arr_cmd[0]) == 0)
 			{
-				builtins[i].func();
 				true_builtin = 1;
+				builtins[i].func();
+	
+				if (i == 0)
+				{
+				}
 				break;
 			}
 			i++;
