@@ -1,0 +1,85 @@
+.\"manpage simple_shell
+.\"
+.TH man 1 "august, 25 2023" "1.0" "simple_shell man page"
+
+.SH NAME
+hsh \ simple shell
+
+.SH SYNOPSIS
+
+- run "./hsh" = (interactive mode)
+
+- run  "echo "/bin/(command)" | ./hsh"  = (non-interactive mode)
+
+
+.SH DESCRIPTION
+
+Simple Shell is a command interpreter that is an infinite loop in C that reads what the user types in the prompt and performs the appropriate actions.
+
+It reads and implements basic commands input by the user.
+
+hsh permits to run simple_shell in both interactive and non-interactive mode.
+
+.SH COMPILATION
+
+simple_shell is compiled on UBUNTU 20.04.4 LTS with GCC 9.4.0., and flags -Wall, -Werror, -Wextra, and -pedantic: gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+
+.SH  USAGE
+
+Upon input of a command, the simple_shell follows these actions:
+
+.SH - tokenizing the string that represents the entered command, followed by creating an array of pointers.       
+
+.SH - checking whether the command is an alias or a built-in command on the PATH variable by merging the command pointer with each directory pointer in the PATH variable.
+
+.SH - If the pointers match, executing the command by forking the program, creating a child process with a different PID from the parent process.
+
+.SH - After executing the command, the shell program stops the search, releases the memory, and prompts for the user's next input
+
+.SH - quitting the program by entering 'exit' or do Ctrl + D.
+
+.SH COMMAND
+
+ The simple-shell supports various commands :
+
+      $ ls / ls -l
+
+      $ /bin/ls -l
+
+      $ pwd
+
+      $ echo
+
+      $ env
+
+      $ exit
+
+.SH EXAMPLES
+
+root@9e0d72b2f2a8:/holbertonschool-simple_shell# ./hsh
+
+root@3b95a5d1d162:/holbertonschool-simple_shell# echo "/bin/ls" | ./hsh
+AUTHORS            exit.c              hsh             shell.h
+README.md          get_path.c          print_env.c     simple_shell.c
+execute_command.c  helper_functions.c  read_command.c  split_command.c
+
+root@3b95a5d1d162:/holbertonschool-simple_shell# ./hsh
+top_shell>> ls -l
+total 68
+.SH -rw-r--r-- 1 root root  5027 Aug 15 10:44 README.md
+.SH -rw-r--r-- 1 root root   846 Aug 23 09:05 execute_command.c
+.SH -rw-r--r-- 1 root root   151 Aug 20 20:54 exit.c
+.SH -rw-r--r-- 1 root root  1093 Aug 23 09:01 get_path.c
+.SH -rw-r--r-- 1 root root   969 Aug 23 09:04 helper_functions.c
+.SH -rwxr-xr-x 1 root root 18208 Aug 23 09:00 hsh
+.SH -rw-r--r-- 1 root root   245 Aug 22 11:43 print_env.c
+.SH -rw-r--r-- 1 root root   349 Aug 22 17:21 read_command.c
+.SH -rw-r--r-- 1 root root   770 Aug 22 14:50 shell.h
+.SH -rw-r--r-- 1 root root   897 Aug 22 22:27 simple_shell.c
+.SH -rw-r--r-- 1 root root   580 Aug 22 22:57 split_command.c
+
+.SH AUTHORS
+
+.SH -Aicha-COUIKHI
+.SH -Younes-SABER
+
