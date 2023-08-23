@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * get_env - is a function that extarct the path from the environment
- *
+ *@input_cmd: user input command
  * Return: a string wich store the path variable
  */
 char *get_env(char *input_cmd)

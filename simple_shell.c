@@ -3,7 +3,7 @@
  * main - entry point of the program
  * Return: 0 Success
  */
-int main()
+int main(void)
 {
 	char **arr_cmd;
 	char *input_cmd;
