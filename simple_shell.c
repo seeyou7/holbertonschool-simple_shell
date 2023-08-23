@@ -43,6 +43,8 @@ int main(void)
 			{
 				true_builtin = 1;
 				builtins[i].func();
+				free(input_cmd);
+				free(arr_cmd);
 				break;
 			}
 			i++;
