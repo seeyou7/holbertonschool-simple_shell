@@ -15,8 +15,9 @@ char *find_path(char *input_cmd)
 
         for (i = 0; arr_path[i] != NULL; i++)
         {
-                size_t path_len = strlen(arr_path[i]) + strlen(input_cmd) + 2;
-                full_path = malloc(path_len);
+                size_t path_len = strlen(arr_path[i]);
+		size_t cmd_len = strlen(input_cmd);
+                full_path = malloc(path_len + cmd_len + 2);
                 if (full_path == NULL)
                 {
                         perror("Error: malloc");

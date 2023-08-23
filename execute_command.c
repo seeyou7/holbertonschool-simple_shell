@@ -3,53 +3,51 @@
  * execute_cmd - is a function that execute a not builtin command
  * Return: an integer 
  */
+
 int execute_cmd(char **arr_cmd)
 {
-	char *arg = arr_cmd[0];
-	char *newcmd = NULL;
-	pid_t _pid = fork();
-	int status;
+    char *cmd = arr_cmd[0];
+    char *full_path = NULL;
+    pid_t _pid;
+    int status;
 
-	if (_pid == -1)
-	{
-		perror("Error: fork");
-	}
+    if (cmd[0] == '/' || cmd[0] == '.')
+    {
+        full_path = cmd;
+    } 
+    else 
+    {
+        full_path = find_path(cmd);
+    }
 
-	if (_pid == 0)
-	{
-		if (arg[0] != '/' && arg[0] != '.')
-		{
-			newcmd = find_path(arr_cmd[0]);
-		}
-		if (newcmd == NULL)
-		{
-			perror("Error: find_path");
-			exit(EXIT_FAILURE);
-		}
-		free(arg);
+    if (full_path == NULL)
+    {
+        perror("Command not found");
+        return (1);
+    }
 
-		arg = newcmd;
+    _pid = fork();
+    if (_pid == -1)
+    {
+        perror("Error: fork");
+        exit(EXIT_FAILURE);
+    }
 
-		if (arr_cmd[0] == NULL)
-		{
-			perror("Error: No argument");
-			exit(EXIT_FAILURE);
-		}
+    if (_pid == 0)
+    {
+        execve(full_path, arr_cmd, NULL);
+        perror("Error: execve");
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        wait(&status);
+    }
 
-		if (arg == NULL)
-		{
-			perror("Error: axecve");
-			return (0);
-		}
-		else
-		{	execve(arg, arr_cmd, NULL);
-			perror("Error: exeve");
-			exit(EXIT_FAILURE);
-		}
-	}
-	else
-	{
-		wait(&status);
-	}
-	return (1);
+    if (full_path != cmd)
+    {
+        free(full_path);
+    }
+
+    return (1);
 }

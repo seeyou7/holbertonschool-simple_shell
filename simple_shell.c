@@ -7,9 +7,9 @@ int main()
 {
 	char **arr_cmd;
 	char *input_cmd;
-	int i = 0;
 	int true_builtin = 0;
-	int interactive_mode = 0;
+	int i = 0;
+	int interactive_mode = isatty(STDIN_FILENO);
 
 	builtin_t builtins[] = {
 		{"exit", exit_func},
@@ -17,14 +17,11 @@ int main()
 		{NULL, NULL}
 	};
 
-	if (isatty(STDIN_FILENO) == 1)
-		interactive_mode = 1;
-
 	while (1)
 	{
 		if (interactive_mode)
 		{
-			write(STDOUT_FILENO, "$shell>> ", 9);
+			write(STDOUT_FILENO, "top_shell>> ", 12);
 		}
 
 		input_cmd = read_command();
@@ -36,7 +33,10 @@ int main()
 			}
 			continue;
 		}
+
 		arr_cmd = split_cmd(input_cmd);
+
+		i = 0;
 		while (builtins[i].cmd != NULL)
 		{
 			if (strcmp(builtins[i].cmd, arr_cmd[0]) == 0)
@@ -47,7 +47,7 @@ int main()
 			}
 			i++;
 		}
-		if (true_builtin != 1)
+		if (!true_builtin)
 		{
 			if (arr_cmd != NULL)
 			{
@@ -57,7 +57,6 @@ int main()
 			free(arr_cmd);
 		}
 		true_builtin = 0;
-		i = 0;
 	}
 	return (0);
 }

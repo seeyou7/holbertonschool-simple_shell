@@ -14,16 +14,8 @@ char *read_command(void)
 
 	if (input == -1)
 	{
-		if (feof(stdin))
-		{
-			free(string);
-			return (NULL);
-		}
-		else
-		{
-		perror("Error");
-		exit(EXIT_FAILURE);
-		}
+		free(string);
+		exit(0);
 	}
 
 	if (string[input - 1] == '\n')

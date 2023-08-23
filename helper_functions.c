@@ -16,7 +16,6 @@ char *get_env(char *input_cmd)
 	}
 	return (NULL);
 }
-#include "shell.h"
 
 /**
   * split_env - tokenize the path
