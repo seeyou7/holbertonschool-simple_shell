@@ -193,7 +193,7 @@ hsh main.c shell.c test_ls_2
 hsh main.c shell.c test_ls_2
 $
 ```
-![Alt Text](https://ibb.co/9rkFD8h)
+![Shell Flowchart](https://github.com/seeyou7/holbertonschool-simple_shell/blob/master/flowchart%20simple%20shell.drawio.png)
 <h3>Authors</h3>
 
 Aicha CHOUIKHI - [@aicha-ch](https://github.com/aicha-ch)
