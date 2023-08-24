@@ -11,21 +11,41 @@ This program gives to the user a prompt "top_shell>>", accepts and executes the 
 
 
 <h2> Process description</h2></p>
+
+
 The next steps are a brief description about how the shell works:
 
-1- First, the parent process is created when the user run the program.
-2- Then, the isatty() function using STDIN_FILENO file descriptor -fd- to tests if there is an open file descriptor referring to a terminal. If isatty() returns 1, the prompt is showed using write() with STDOUT_FILENO as fd and waits for an input user command line.
-3- When the user types a command, getline() function reads an entire line from the stream and strtok() function breaks the inputted command into a sequence of non-empty tokens.
-4- Next, it creates a separate child process suing fork() that performs the inputted command. Unless otherwise is specified, the parent process waits for the child to exit before continuing.
-5- After tokening the command, execve() function brings and executes it, the it frees all allocated memory with free().
-6- Finally, the program returns to main process: prints the prompt, and waits for another user input.
+## How the Shell Works
+
+Here's a brief description of how the shell works:
+
+1. **Parent Process Creation:**
+   When the user runs the program, the parent process is created.
+
+2. **Terminal Check:**
+   The `isatty()` function is used with the `STDIN_FILENO` file descriptor (fd) to test if there is an open file descriptor referring to a terminal. If `isatty()` returns 1, the prompt is shown using `write()` with `STDOUT_FILENO` as fd, and the program waits for user input.
+
+3. **Command Parsing:**
+   When the user types a command, the `getline()` function reads the entire line from the stream, and the `strtok()` function breaks the input command into a sequence of non-empty tokens.
+
+4. **Child Process Creation:**
+   A separate child process is created using `fork()` to execute the inputted command. Unless specified otherwise, the parent process waits for the child to exit before continuing.
+
+5. **Command Execution:**
+   After tokenizing the command, the `execve()` function is used to bring and execute it. Once executed, the program frees all allocated memory using `free()`.
+
+6. **Return to Main Process:**
+   Finally, the program returns to the main process. It prints the prompt and waits for another user input.
+
+This is a simplified overview of how the shell operates.
 
 <h2> Tasks</h2></p>
 
 <h3> 0. README, man, AUTHORS</h3>
 
 - Write a README
-- Write a man for your shell.
+
+![Alt Text](https://ibb.co/9rkFD8h)- Write a man for your shell.
 - You should have an AUTHORS file at the root of your repository, listing all individuals having contributed content to the repository. Format, see Docker
 
 <h3> 1. Betty would be proud</h3>
@@ -173,6 +193,7 @@ hsh main.c shell.c test_ls_2
 hsh main.c shell.c test_ls_2
 $
 ```
+![Alt Text](https://ibb.co/9rkFD8h)
 <h3>Authors</h3>
 
 Aicha CHOUIKHI - [@aicha-ch](https://github.com/aicha-ch)
