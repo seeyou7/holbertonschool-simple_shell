@@ -25,7 +25,6 @@ typedef struct builtIn
 } builtin_t;
 
 int main(void);
-int exit_func(void);
 int print_env(void);
 char *read_command(void);
 char **split_cmd(char *input);
@@ -33,5 +32,6 @@ int execute_cmd(char **arr_cmd);
 char *get_env(char *input_cmd);
 char **split_env(char *path);
 char *find_path(char *input_cmd);
+int exit_func(void);
 
 #endif
